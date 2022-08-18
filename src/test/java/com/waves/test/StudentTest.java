@@ -4,8 +4,12 @@ import com.waves.domain.Address;
 import com.waves.domain.Student;
 import com.waves.domain.Teacher;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  * @author huangWenTao
@@ -40,5 +44,26 @@ public class StudentTest {
         ApplicationContext app = new ClassPathXmlApplicationContext(resource);
         Teacher teacher = (Teacher) app.getBean("teacher");
         System.out.println("Spring ========>"+teacher);
+    }
+
+    @Test
+    public void test05() {
+        BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource(resource));
+        Student student = (Student) beanFactory.getBean("student");
+        System.out.println(student);
+
+    }
+
+    @Test
+    public void test06() {
+        ApplicationContext app = new FileSystemXmlApplicationContext("D:\\spring_workspace\\spring_demo_001\\src\\main\\resources\\applicationContext.xml");
+        Address address = (Address) app.getBean("address");
+        System.out.println("Spring ========>"+address);
+    }
+
+
+    @Test
+    public void test07() {
+
     }
 }

@@ -13,13 +13,15 @@ public class Teacher {
     private Address address;
 
     public Teacher() {
-        System.out.println("Student无参构造方法调用！！！");
+        System.out.println("Teacher无参构造方法调用！！！");
         name = "Tom";
         sex = "男";
         age = 22;
     }
 
     public Teacher(String name, String sex, Integer age, Address address) {
+        System.out.println("Teacher有参构造方法调用！！！");
+
         this.name = name;
         this.sex = sex;
         this.age = age;
@@ -31,6 +33,7 @@ public class Teacher {
     }
 
     public void setName(String name) {
+        System.out.println("Teacher set方法调用！！！");
         this.name = name;
     }
 

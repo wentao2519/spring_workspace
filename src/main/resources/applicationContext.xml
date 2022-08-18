@@ -1,20 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.waves.domain.Student">
+        <property name="name" value="waves"/>
+        <property name="sex" value="男"/>
+        <property name="age" value="20"/>
+        <property name="curriculumList">
+            <list>
+                <ref bean="curriculum1"/>
+                <ref bean="curriculum2"/>
+                <ref bean="curriculum3"/>
+            </list>
+        </property>
+        <property name="address" ref="address"/>
+        <property name="hobbyArray">
+            <array>
+                <value>唱</value>
+                <value>跳</value>
+                <value>rap</value>
+                <value>篮球</value>
+            </array>
+        </property>
+    </bean>
+
+    <bean id="curriculum1" class="com.waves.domain.Curriculum">
+        <property name="curId" value="cur:001"/>
+        <property name="curName" value="《java》"/>
+    </bean>
+    <bean id="curriculum2" class="com.waves.domain.Curriculum">
+        <property name="curId" value="cur:002"/>
+        <property name="curName" value="《python》"/>
+    </bean>
+    <bean id="curriculum3" class="com.waves.domain.Curriculum">
+        <property name="curId" value="cur:003"/>
+        <property name="curName" value="《spring》"/>
+    </bean>
 
 
+  <!-- <bean id="teacher" class="com.waves.domain.Teacher">
+       <property name="name" value="dork"/>
+       <property name="sex" value="女"/>
+       <property name="age" value="20"/>
+        <property name="address" ref="address"/>
+    </bean>
+-->
     <bean id="address" class="com.waves.domain.Address">
         <property name="province" value="山东省"/>
         <property name="city" value="临沂市"/>
         <property name="county" value="兰陵县"/>
-    </bean>
-
-    <bean id="student" class="com.waves.domain.Student">
-        <property name="address" ref="address"/>
-    </bean>
-   <bean id="teacher" class="com.waves.domain.Teacher">
-        <property name="address" ref="address"/>
     </bean>
 
 </beans>

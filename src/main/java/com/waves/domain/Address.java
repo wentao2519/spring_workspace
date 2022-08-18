@@ -18,6 +18,8 @@ public class Address {
     }
 
     public Address(String province, String city, String county) {
+        System.out.println("Address有参构造方法调用！！！");
+
         this.province = province;
         this.city = city;
         this.county = county;
@@ -28,6 +30,8 @@ public class Address {
     }
 
     public void setProvince(String province) {
+        System.out.println("Address set方法调用！！！");
+
         this.province = province;
     }
 
