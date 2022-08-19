@@ -2,6 +2,7 @@ package com.waves.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author huangWenTao
@@ -18,6 +19,8 @@ public class Student {
 
     private String[] hobbyArray;
 
+    private Map<String, Integer> mailsMap;
+
     public Student() {
         System.out.println("Student无参构造方法调用！！！");
         name = "Waves";
@@ -25,9 +28,11 @@ public class Student {
         age = 20;
         curriculumList=null;
         hobbyArray=null;
+        mailsMap=null;
     }
 
-    public Student(String name, String sex, Integer age, Address address,List<Curriculum> curriculumList,String[] hobbyArray) {
+    public Student(String name, String sex, Integer age, Address address,
+                   List<Curriculum> curriculumList,String[] hobbyArray,Map<String, Integer> mailsMap) {
         System.out.println("Student有参构造方法调用！！！");
         this.name = name;
         this.sex = sex;
@@ -35,6 +40,7 @@ public class Student {
         this.address = address;
         this.curriculumList=curriculumList;
         this.hobbyArray=hobbyArray;
+        this.mailsMap=mailsMap;
     }
 
     public String getName() {
@@ -86,6 +92,14 @@ public class Student {
         this.hobbyArray = hobbyArray;
     }
 
+    public Map<String, Integer> getMailsMap() {
+        return mailsMap;
+    }
+
+    public void setMailsMap(Map<String, Integer> mailsMap) {
+        this.mailsMap = mailsMap;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -95,6 +109,7 @@ public class Student {
                 ", curriculumList=" + curriculumList +
                 ", address=" + address +
                 ", hobbyArray=" + Arrays.toString(hobbyArray) +
+                ", mailsMap=" + mailsMap +
                 '}';
     }
 }

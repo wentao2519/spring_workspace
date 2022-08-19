@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+ https://www.springframework.org/schema/context/spring-context.xsd">
+   <!--
+    <bean id="student" class="com.waves.domain.Student">
+        <constructor-arg name="name" value="张三"/>
+        <constructor-arg name="sex" value="男"/>
+        <constructor-arg name="age" value="20"/>
+        <constructor-arg name="address" ref="address"/>
+        <constructor-arg name="curriculumList">
+            <list>
+                <ref bean="curriculum1"/>
+                <ref bean="curriculum2"/>
+                <ref bean="curriculum3"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="hobbyArray">
+            <array>
+                <value>唱</value>
+                <value>跳</value>
+                <value>rap</value>
+                <value>篮球</value>
+            </array>
+        </constructor-arg>
+        <constructor-arg name="mailsMap">
+            <map>
+                <entry key="a1" value="123"/>
+                <entry key="b2" value="1234"/>
+                <entry key="c3" value="12345"/>
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="address" class="com.waves.domain.Address">
+        <constructor-arg name="province" value="江苏省"/>
+        <constructor-arg name="city" value="苏州市"/>
+        <constructor-arg name="county" value="吴中区"/>
+    </bean>
+
+
+    <bean id="curriculum1" class="com.waves.domain.Curriculum">
+        <constructor-arg name="curId" value="CUR:001"/>
+        <constructor-arg name="curName" value="《Java》"/>
+    </bean>
+    <bean id="curriculum2" class="com.waves.domain.Curriculum">
+        <constructor-arg name="curId" value="CUR:002"/>
+        <constructor-arg name="curName" value="《SQL》"/>
+    </bean>
+    <bean id="curriculum3" class="com.waves.domain.Curriculum">
+        <constructor-arg name="curId" value="CUR:003"/>
+        <constructor-arg name="curName" value="《Spring》"/>
+    </bean>
+
+-->
+    <context:property-placeholder location="jdbc.properties"/>
+
+    <bean id="myJdbc" class="com.waves.domain.MyJdbc">
+        <constructor-arg value="${jdbc.driverClassName}"/>
+        <constructor-arg value="${jdbc.url}"/>
+        <constructor-arg value="${jdbc.username}"/>
+        <constructor-arg value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="localDateFactory" class="com.waves.factory.LocalDateFactory">
+        <constructor-arg index="0" value="2022"/>
+        <constructor-arg index="1" value="8"/>
+        <constructor-arg index="2" value="20"/>
+    </bean>
+
+    <bean id="birthday" factory-bean="localDateFactory" factory-method="createLocalDate"/>
+
+    <bean id="user" class="com.waves.domain.User" init-method="init" destroy-method="destroy">
+        <constructor-arg value="admin"/>
+        <constructor-arg value="123456"/>
+        <constructor-arg ref="birthday"/>
+
+    </bean>
+</beans>

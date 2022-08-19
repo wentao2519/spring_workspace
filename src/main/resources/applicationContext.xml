@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       https://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="student" class="com.waves.domain.Student">
         <property name="name" value="waves"/>
@@ -24,7 +27,28 @@
                 <value>篮球</value>
             </array>
         </property>
+   <!--     <property name="mailsMap">
+            <map>
+                <entry key="a1" value="123"/>
+                <entry key="b2" value="1234"/>
+                <entry key="c3" value="12345"/>
+            </map>
+        </property>-->
+        <property name="mailsMap" ref="mailsMap"/>
     </bean>
+
+
+    <util:map id="mailsMap">
+        <entry key="a1" value="123"/>
+        <entry key="b2" value="1234"/>
+        <entry key="c3" value="12345"/>
+    </util:map>
+
+
+
+
+
+
 
     <bean id="curriculum1" class="com.waves.domain.Curriculum">
         <property name="curId" value="cur:001"/>
